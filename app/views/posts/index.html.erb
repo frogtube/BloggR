@@ -1,3 +1,5 @@
+<% provide :home_active, 'active' %>
+
 <p id="notice"><%= notice %></p>
 
 <h1>Posts</h1>
@@ -18,7 +20,6 @@
       <tr>
         <td><%= post.title %></td>
         <td><%= post.description %></td>
-        <td><%= post.content %></td>
         <td><%= post.slug %></td>
         <td><%= link_to 'Show', post %></td>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>

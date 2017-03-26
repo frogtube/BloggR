@@ -12,7 +12,7 @@
 
     <%= render 'layouts/navbar' %>
 
-    <div class="container" style="padding-top: 2em">
+    <div class="container <%= controller_name %> <%= action_name %>" style="padding-top: 2em">
       <%= yield %>
     </div>
     

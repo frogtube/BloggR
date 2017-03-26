@@ -1,31 +1,61 @@
 <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <a class="navbar-brand" href="<%= posts_path %>">BloggR</a>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
+  <%= link_to "BloggR", posts_path, class: "navbar-brand" %>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+        <%= link_to 'Home', posts_path, class: "nav-link #{yield(:home_active)}" %>
       </li>
+      <li>
+        <span class="nav-link"> | </span>
+      </li>      
       <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
+        <%= link_to 'New', new_post_path, class: "nav-link #{yield(:new_active)}" %>
       </li>
-    </ul>
-
-      <div class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown link
+      <li><span class="nav-link"> | </span></li>      
+      <li class="nav-item">
+        <a class="nav-link" href="#">Art</a>
+      </li>
+      <li><span class="nav-link"> | </span></li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Business</a>
+      </li>
+      <li><span class="nav-link"> | </span></li>   
+      <li class="nav-item">
+        <a class="nav-link" href="#">Fashion</a>
+      </li>
+      <li><span class="nav-link"> | </span></li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Gaming</a>
+      </li>
+      <li><span class="nav-link"> | </span></li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Lifestyle</a>
+      </li>
+      <li><span class="nav-link"> | </span></li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Politics</a>
+      </li>
+      <li><span class="nav-link"> | </span></li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Stories</a>
+      </li>
+      <li><span class="nav-link"> | </span></li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Tech</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Author
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <%= link_to 'New post', new_post_path, class: "dropdown-item" %>
+          <a class="dropdown-item" href="#">My posts</a>
+          <a class="dropdown-item" href="#">My account</a>
         </div>
-      </div>
+      </li>
+    </ul>
   </div>
 </nav>
