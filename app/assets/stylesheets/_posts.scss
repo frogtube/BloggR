@@ -1,0 +1,67 @@
+.posts.index {
+  .pagination {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .card {
+    border: 1px solid #787878;
+    border-radius: 0;
+    height: 350px;
+    margin-bottom: 20px;
+    .card-topper {
+      height: 200px;
+      width: 100%;
+      background-size: cover;
+      background-position: center;
+    }
+    .card-block {
+      padding: 10px;
+      .btn-read {
+        background-color: #e8e8e8;
+        font-weight: 300;
+        border-radius: 0;
+        color: black;
+        &:hover {
+          background-color: #d8d8d8; 
+        }
+      }
+      .card-title {
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+        a {
+          color: black;
+          text-decoration: none;
+        }
+      }
+      .published-date {
+        font-size: 0.8rem;
+        color: #787878;
+        font-weight: 300;
+        margin-top: 0.3rem;
+        margin-bottom: 0.3rem;
+      }
+      .card-text {
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
+
+@media screen and (min_width: 34em) {
+  .post.index .card {
+    height: 440px;
+  }
+}
+
+@media screen and (min_width: 48em) {
+  .post.index .card {
+    height: 420px;
+  }
+}
+
+@media screen and (min_width: 75em) {
+  .post.index .card {
+    height: 415px;
+  }
+}
+
