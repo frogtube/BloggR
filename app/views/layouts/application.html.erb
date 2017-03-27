@@ -12,6 +12,9 @@
 
     <%= render 'layouts/navbar' %>
 
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
     <div class="container <%= controller_name %> <%= action_name %>" style="padding-top: 2em">
       <%= yield %>
     </div>
