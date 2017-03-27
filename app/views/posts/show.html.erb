@@ -1,6 +1,12 @@
 <% provide :page_title, @post.title %>
+<% provide :author_active, "active" %>
 
 <p id="notice"><%= notice %></p>
+
+<div>
+  <%= link_to "Edit", post_path(@post), class: "btn btn-read" %> 
+  <%= link_to "Delete", post_path(@post), method: :delete, class: "btn btn-read", data: {confirm: "Are you sure?" } %> 
+</div>
 
 <div class="row">
   <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2" style="text-align: center">
@@ -9,3 +15,5 @@
     <%= @post.content %>
   </div>
 </div>
+
+<%= link_to "Back", author_path, class: "btn btn-read" %> 

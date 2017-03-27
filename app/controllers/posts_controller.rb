@@ -7,6 +7,10 @@ class PostsController < ApplicationController
     @posts = Post.most_recent.all
   end
 
+  def author
+    @posts = Post.most_recent.all
+  end
+
   # GET /posts/1
   # GET /posts/1.json
   def show
@@ -56,7 +60,7 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
+      format.html { redirect_to author_path, notice: 'Post was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
