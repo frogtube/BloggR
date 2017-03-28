@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:edit, :update, :destroy]
+  before_action :authenticate_author!, only: [:author, :new, :edit, :create, :update, :destroy]
 
   # GET /posts
   # GET /posts.json
@@ -8,17 +9,18 @@ class PostsController < ApplicationController
   end
 
   def author
-    @posts = Post.most_recent.all
+    @posts = current_author.posts.most_recent
   end
 
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @post = Post.all.friendly.find(params[:id])
   end
 
   # GET /posts/new
   def new
-    @post = Post.new
+    @post = current_author.posts.new
   end
 
   # GET /posts/1/edit
@@ -28,7 +30,7 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = Post.new(post_params)
+    @post = current_author.posts.new(post_params)
 
     respond_to do |format|
       if @post.save
@@ -68,7 +70,7 @@ class PostsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
-      @post = Post.friendly.find(params[:id])
+      @post = current_author.posts.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
