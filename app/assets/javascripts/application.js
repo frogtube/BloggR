@@ -15,3 +15,15 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+document.addEventListener("turbolinks:load", function() {
+  tinymce.remove()
+  tinymce.init({ 
+    selector:'textarea#post_content',
+    plugins: "codesample media image link paste emoticons charmap nonbreaking preview tinymcespellchecker lists linkchecker autolink autosave autoresize wordcount fullscreen",
+    toolbar: "styleselect | restoredraft undo redo paste | bold italic link | image media emoticons charmap | nonbreaking codesample fullscreen",
+    menubar: "insert view edit",
+    spellchecker_rpc_url: 'localhost/ephox-spelling',
+    spellchecker_language: 'en',
+  });
+})
