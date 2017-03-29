@@ -12,40 +12,49 @@
   <% end %>
 
   <div class="row">
-    <div class="col-md-3">
-      <div class="field">
-        <%= f.label :title %>
-        <%= f.text_field :title %>
+    <div class="col-lg-4 col-md-8">
+
+      <div class="card">
+        <div class="card-block">
+          <% if @post.new_record? %>
+            <h4 class="card-title">New post</h4>
+          <% else %>
+            <h4 class="card-title">
+              <b>Edit</b>
+              <span class="thin-text">'<%= @post.title %>'</span> 
+            </h4>
+          <% end %>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+              <%= f.label :title %>
+              <%= f.text_field :title, class: "form-control" %>
+          </li>
+          <li class="list-group-item">
+              <%= f.label :banner_image_url %>
+              <%= f.text_field :banner_image_url, class: "form-control" %>
+          </li>
+          <li class="list-group-item" id="description-card-block">
+            <%= f.label :description %>
+            <%= f.text_area :description, class: "form-control" %>
+          </li>
+          <li class="list-group-item">
+            <%= f.label :slug %>
+            <%= f.text_field :slug, class: "form-control", disabled: true %>
+          </li>
+        </ul>
+        <div class="card-block actions">
+          <%= f.submit "Save blog post", class: "btn btn-read btn-block" %>
+        </div>
       </div>
-      <div class="field">
-        <%= f.label :banner_image_url %>
-        <%= f.text_field :banner_image_url %>
+      <% if @post.persisted? %>
+        <%= link_to 'Show', @post %> |
+      <% end %>
+      <%= link_to 'Back', posts_path %>
       </div>
-      <div class="field">
-        <%= f.label :description %>
-        <%= f.text_area :description %>
-      </div>
-      <div class="field">
-        <%= f.label :slug %>
-        <%= f.text_field :slug, class: "form-control", disabled: true %>
-      </div>
-      
-      </div>
-      <div class="col-md-9">
-        <div class="field">
-        <%= f.label :content %>
+      <div class="col-md-8">
         <%= f.text_area :content %>
       </div>
     </div>
-  </div>
-
-  
-
-  
-
-  
-
-  <div class="actions">
-    <%= f.submit %>
   </div>
 <% end %>
