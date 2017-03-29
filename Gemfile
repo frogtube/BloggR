@@ -57,3 +57,5 @@ gem 'bootstrap', '~> 4.0.0.alpha6'
 gem 'friendly_id', '~> 5.1.0'
 
 gem 'devise'
+
+gem 'annotate'

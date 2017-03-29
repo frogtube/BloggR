@@ -18,6 +18,11 @@
                 <% if author_signed_in? %>
                     <%= link_to "Edit", edit_post_path(post), class: "btn btn-read" %>
                     <%= link_to "Delete", post_path(post), method: :delete, class: "btn btn-read", data: { confirm: 'Are yiou sure?' } %>
+                    <% if post.published? %>
+                        <%= link_to "Unpublish", unpublish_path(:post =>  post.id), method: :put, class: "btn btn-read" %>
+                    <% else %>
+                        <%= link_to "Publish", publish_path(:post =>  post.id), method: :put, class: "btn btn-read" %>
+                    <% end %> 
                 <% end %>
                 </div>
             </div>

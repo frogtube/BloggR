@@ -1,15 +1,30 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:edit, :update, :destroy]
-  before_action :authenticate_author!, only: [:author, :new, :edit, :create, :update, :destroy]
+  before_action :authenticate_author!, only: [:author, :new, :edit, :create, :update, :destroy, :publish, :unpublish]
 
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.most_recent.all
+    @posts = Post.most_recent.published
   end
 
   def author
     @posts = current_author.posts.most_recent
+  end
+
+  def publish
+    @post = Post.find(params[:post])
+    @post.update(published: true)
+    if @post.published_at = nil
+      @post.update(published_at: Time.now)
+    end
+    redirect_to author_path
+  end
+
+  def unpublish
+    @post = Post.find(params[:post])
+    @post.update(published: false)
+    redirect_to author_path
   end
 
   # GET /posts/1
