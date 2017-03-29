@@ -8,6 +8,12 @@
       <li class="nav-item">
         <%= link_to 'Home', posts_path, class: "nav-link #{yield(:home_active)}" %>
       </li>
+      <li>
+        <span class="nav-link"> | </span>
+      </li>      
+      <li class="nav-item">
+        <%= link_to 'New', new_post_path, class: "nav-link #{yield(:new_active)}" %>
+      </li>
       <li><span class="nav-link"> | </span></li>      
       <li class="nav-item">
         <a class="nav-link" href="#">Art</a>
@@ -41,11 +47,12 @@
         <a class="nav-link" href="#">Tech</a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle <%= yield(:author_active) %>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Author
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <%= link_to "My posts", author_posts_path, class: "dropdown-item" %>
+          <%= link_to 'New post', new_post_path, class: "dropdown-item" %>
+          <a class="dropdown-item" href="#">My posts</a>
           <a class="dropdown-item" href="#">My account</a>
         </div>
       </li>
