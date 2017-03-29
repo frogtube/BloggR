@@ -28,7 +28,7 @@ class Post < ApplicationRecord
     title_changed?
   end
 
-  def published_at
+  def was_published_at
     "Published #{published_at.strftime('%-b %-d, %Y')}"
   end
 end

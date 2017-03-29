@@ -15,7 +15,7 @@ class PostsController < ApplicationController
   def publish
     @post = Post.find(params[:post])
     @post.update(published: true)
-    if @post.published_at = nil
+    if @post.published_at == nil
       @post.update(published_at: Time.now)
     end
     redirect_to author_path
