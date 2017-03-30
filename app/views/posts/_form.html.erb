@@ -38,6 +38,10 @@
             <%= f.label :description %>
             <%= f.text_area :description, class: "form-control" %>
           </li>
+          <li class="list-group-item" id="description-card-block">
+            <%= f.label 'Tags' %>
+            <%= f.text_area :tag_list, class: "form-control" %>
+          </li>
           <li class="list-group-item">
             <%= f.label :slug %>
             <%= f.text_field :slug, class: "form-control", disabled: true %>
