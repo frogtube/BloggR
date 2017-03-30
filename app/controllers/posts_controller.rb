@@ -5,11 +5,11 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.most_recent.published
+    @posts = Post.most_recent.published.paginate(:page => params[:page], per_page: 3)
   end
 
   def author
-    @posts = current_author.posts.most_recent
+    @posts = current_author.posts.most_recent.paginate(:page => params[:page], per_page: 3)
   end
 
   def publish

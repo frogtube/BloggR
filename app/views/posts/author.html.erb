@@ -12,12 +12,8 @@
                 <div class="card-topper" style="background-image: url(<%= post.banner_image_url %>)"></div>
             <% end %>
                 <div class="card-block">
-                <h4 class="card-title"><%= link_to post.title, post %></h4>
-                <% if post.published_at != nil %> 
-                    <p class="published-date"><%= post.was_published_at %></p>
-                <% else %>
-                    <p class="published-date">Not published yet</p>
-                <% end %>
+                <h4 class="card-title"><%= link_to post.title, post %></h4> 
+                <p class="published-date"><%= post.was_published_at %></p>
                 <p class="card-text"><%= truncate(post.description, length: 130) %></p>
                 <% if author_signed_in? %>
                     <%= link_to "Edit", edit_post_path(post), class: "btn btn-read" %>
@@ -34,3 +30,4 @@
     <% end %>
 </div>
 
+<%= render 'paginate' %>
