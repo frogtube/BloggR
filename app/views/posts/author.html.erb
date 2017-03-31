@@ -13,6 +13,9 @@
             <% end %>
                 <div class="card-block">
                 <h4 class="card-title"><%= link_to post.title, post %></h4> 
+                <p class="published-date"><%= raw post.tags.map{ |t| link_to t.name, author_path(tag: t.name) }.join(', ') %></p>
+                    <!-- Attention a simple_format, faille de sécurité? -->                 
+                <p class="published-date"><%= post.was_published_at %></p>
                 <p class="published-date"><%= post.was_published_at %></p>
                 <p class="card-text"><%= truncate(post.description, length: 130) %></p>
                 <% if author_signed_in? %>

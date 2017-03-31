@@ -16,6 +16,9 @@
 #
 
 class Post < ApplicationRecord
+
+  PER_PAGE = 6
+
   acts_as_taggable # Alias for acts_as_taggable_on :tags
 
   extend FriendlyId

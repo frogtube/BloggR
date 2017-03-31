@@ -2,14 +2,24 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:edit, :update, :destroy]
   before_action :authenticate_author!, only: [:author, :new, :edit, :create, :update, :destroy, :publish, :unpublish]
 
+  PER_PAGE = 6
+
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.most_recent.published.paginate(:page => params[:page], per_page: 3)
+    if params[:tag].present?
+      @posts = Post.published.most_recent.tagged_with([params[:tag]]).paginate(:page => params[:page], per_page: PER_PAGE)
+    else  
+      @posts = Post.published.most_recent.paginate(:page => params[:page], per_page: PER_PAGE)
+    end
   end
 
   def author
-    @posts = current_author.posts.most_recent.paginate(:page => params[:page], per_page: 3)
+    if params[:tag].present?
+      @posts = current_author.posts.tagged_with([params[:tag]]).most_recent.paginate(:page => params[:page], per_page: PER_PAGE)
+    else
+      @posts = current_author.posts.most_recent.paginate(:page => params[:page], per_page: PER_PAGE)
+    end
   end
 
   def publish
@@ -30,7 +40,11 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
-    @post = Post.all.friendly.find(params[:id])
+    if current_author
+      @post = current_author.posts.all.friendly.find(params[:id])
+    else
+      @post = Post.published.friendly.find(params[:id])
+    end
   end
 
   # GET /posts/new
@@ -59,7 +73,7 @@ class PostsController < ApplicationController
   end
 
   # PATCH/PUT /posts/1
-  # PATCH/PUT /posts/1.json
+  # PATCH/PUT /posts/1.jsonrails 
   def update
     respond_to do |format|
       if @post.update(post_params)
