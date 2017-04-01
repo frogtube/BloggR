@@ -2,7 +2,7 @@ body {
   background-color: $primary-color-light;
 }
 
-.navbar, .navbar-brand {
+.navbar {
     background-color: white;
     border-bottom: solid 0.5px $divider-color;
     height: 40px;
@@ -12,6 +12,15 @@ body {
     float:none;
     margin:0 auto;
     text-align: center;
+}
+
+.navbar-brand {
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-author-brand {
+  margin-top: 5px;
 }
 
 .dropdown-menu {
@@ -34,4 +43,20 @@ h1, h2, h3, h4, h5, h6 {
 p {
   font-family: 'Raleway', serif;
   color: $primary-color-text;
+}
+
+@media screen and (min_width: 34em) {
+  .hide-in-toggle {
+    color: blue;
+  }
+}
+
+@media screen and (min_width: 48em) {
+  .hide-in-toggle {
+    color: blue;
+  }
+}
+
+@media screen and (min_width: 75em) {
+ 
 }

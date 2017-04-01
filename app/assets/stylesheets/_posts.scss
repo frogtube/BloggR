@@ -85,11 +85,19 @@
   .post.index .card {
     height: 440px;
   }
+  .navbar-brand {
+    margin: 0;
+    padding: 0;
+  }
 }
 
 @media screen and (min_width: 48em) {
   .post.index .card {
     height: 420px;
+  }
+  .navbar-brand {
+    margin: 0;
+    padding: 0;
   }
 }
 
