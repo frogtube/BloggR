@@ -1,0 +1,37 @@
+body {
+  background-color: $primary-color-light;
+}
+
+.navbar, .navbar-brand {
+    background-color: white;
+    border-bottom: solid 0.5px $divider-color;
+    height: 40px;
+}
+
+.navbar-nav {
+    float:none;
+    margin:0 auto;
+    text-align: center;
+}
+
+.dropdown-menu {
+  float: right;
+}
+
+.navbar-toggler, .navbar-toggeable-md {
+  height: 30px;
+}
+
+.navbar-toggler-icon {
+  height: 20px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Raleway', sans-serif;
+  color: $primary-color-text;
+}
+
+p {
+  font-family: 'Raleway', serif;
+  color: $primary-color-text;
+}

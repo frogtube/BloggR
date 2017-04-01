@@ -1,4 +1,4 @@
-<div class="col-sm-6 col-lg-4">
+<div class="col-sm-4 col-lg-2">
   <div class="card">
   <%= link_to post do %>
     <div class="card-topper" style="background-image: url(<%= post.banner_image_url %>)"></div>
@@ -8,7 +8,9 @@
       <p class="published-date"><%= raw post.tags.map{ |t| link_to t.name, posts_path(tag: t.name) }.join(', ') %></p>
                     <!-- Attention a simple_format, faille de sécurité? -->       
       <p class="published-date"><%= post.was_published_at %> by <%= post.author.name %></p>
-      <p class="card-text"><%= truncate(post.description, length: 130) %></p>
+      <%= link_to post do %>
+        <p class="card-text"><%= truncate(post.description, length: 130) %></p>
+      <% end %>
     </div>
   </div>
 </div>

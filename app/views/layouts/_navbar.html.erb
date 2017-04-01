@@ -4,7 +4,7 @@
   </button>
   <%= link_to "BloggR", posts_path, class: "navbar-brand" %>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav">
+    <ul class="navbar-nav center">
       <li class="nav-item">
         <%= link_to 'Home', posts_path, class: "nav-link #{yield(:home_active)}" %>
       </li>
@@ -46,27 +46,26 @@
       <li class="nav-item">
         <a class="nav-link" href="#">Tech</a>
       </li>
-      
-      <% if author_signed_in? %>
-        <li class="nav-item dropdown <%= yield(:author_active) %>">
-          <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Author
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <%= link_to 'New post', new_post_path, class: "dropdown-item" %>
-            <%= link_to 'My posts', author_path, class: "dropdown-item" %>
-            <%= link_to 'Logout', destroy_author_session_path, method: :delete, class: "dropdown-item" %>
-            <a class="dropdown-item" href="#">My account</a>
-          </div>
-        </li>
-      <% else %>
-        <li class="nav-item">
-          <%= link_to 'Signin', new_post_path, class: "nav-link" %>
-        </li>
-         <li class="nav-item">
-          <%= link_to 'Signup', new_author_registration_path, class: "nav-link" %>
-        </li>
-      <% end %>
     </ul>
   </div>
+  <% if author_signed_in? %>
+    <a class="nav-item dropdown <%= yield(:author_active) %>">
+      <a class="nav-link dropdown-toggle navbar-brand" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Author
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <%= link_to 'New post', new_post_path, class: "dropdown-item" %>
+        <%= link_to 'My posts', author_path, class: "dropdown-item" %>
+        <a class="dropdown-item" href="#">My account</a>
+        <%= link_to 'Logout', destroy_author_session_path, method: :delete, class: "dropdown-item" %>
+      </div>
+    </a>
+  <% else %>
+    <li class="nav-item">
+      <%= link_to 'Signin', new_post_path, class: "nav-link" %>
+    </li>
+      <li class="nav-item">
+      <%= link_to 'Signup', new_author_registration_path, class: "nav-link" %>
+    </li>
+  <% end %>
 </nav>

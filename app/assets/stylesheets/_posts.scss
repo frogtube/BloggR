@@ -1,10 +1,14 @@
-.posts.index {
+
+.posts.index, .posts.author {
+  padding-left: 2rem;
+  padding-right: 2rem;
+
   .pagination {
     margin-left: auto;
     margin-right: auto;
   }
   .card {
-    border: 1px solid #787878;
+    border: 1px solid $divider-color;
     border-radius: 0;
     margin-bottom: 20px;
     .card-topper {
@@ -15,31 +19,41 @@
     }
     .card-block {
       padding: 10px;
-      .btn-read {
-        background-color: #e8e8e8;
-        font-weight: 300;
-        border-radius: 0;
-        color: black;
-        &:hover {
-          background-color: #d8d8d8; 
-        }
+      a:hover {
+        text-decoration: none;
       }
       .card-title {
         font-size: 1.3rem;
         margin-bottom: 0.5rem;
+        font-family: 'Raleway', sans-serif;
         a {
-          color: black;
+          color: $primary-color-text;
           text-decoration: none;
         }
       }
       .published-date {
         font-size: 0.8rem;
-        color: #787878;
         font-weight: 300;
         margin-top: 0.3rem;
         margin-bottom: 0.3rem;
+        a:hover {
+          font-weight: 350;
+        }
       }
       .card-text {
+        font-family: 'Roboto', serif;
+        color: $primary-color-text;
+        font-size: 0.9rem;
+        padding-bottom: 0.5rem;
+        font-weight: 300;
+        
+        &:hover {
+          text-decoration: none !important;
+          color: black;
+        }
+      }
+
+      .tags {
         font-size: 0.9rem;
       }
     }

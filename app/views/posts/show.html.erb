@@ -1,22 +1,30 @@
 <% provide :page_title, @post.title %>
 <% provide :author_active, "active" %>
 
-<% if author_signed_in? %>
-  <div>
-    <%= link_to "Edit", edit_post_path(@post), class: "btn btn-read" %> 
-    <%= link_to "Delete", post_path(@post), method: :delete, class: "btn btn-read", data: {confirm: "Are you sure?" } %> 
-  </div>
-<% end %>
+<div class="container">
+  <% if author_signed_in? %>
+    <div>
+      <%= link_to "Delete", post_path(@post), method: :delete, class: "btn btn-read btn-right-float", data: {confirm: "Are you sure?" } %> 
+      <%= link_to "Edit", edit_post_path(@post), class: "btn btn-read btn-right-float", style: "text-align: right" %> 
+    </div>
+  <% end %>
 
-<div class="row">
-  <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2" style="text-align: center">
-    <h1><%= @post.title %></h1>
-    <p><%= @post.published_at %></p>
-    <%= @post.content.html_safe %>
+  <% if author_signed_in? %>
+    <%= link_to "Back", author_path, class: "btn btn-read" %>
+  <% else %>
+    <%= link_to "Back", posts_path, class: "btn btn-read" %>
+  <% end %>
+
+  <div class="row">
+    <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2" style="text-align: center">
+      <h1><%= @post.title %></h1>
+      <p class="published-date light-grey"><%= @post.was_published_at %> by <%= @post.author.name %></p>
+      <%= @post.content.html_safe %>
+    </div>
   </div>
+  <% if author_signed_in? %>
+    <%= link_to "Back", author_path, class: "btn btn-read" %>
+  <% else %>
+    <%= link_to "Back", posts_path, class: "btn btn-read" %>
+  <% end %>
 </div>
-<% if author_signed_in? %>
-  <%= link_to "Back", author_path, class: "btn btn-read" %>
-<% else %>
-  <%= link_to "Back", posts_path, class: "btn btn-read" %>
-<% end %>
