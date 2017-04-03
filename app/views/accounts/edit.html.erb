@@ -1,0 +1,77 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <%= form_tag update_info_account_path, method: :put do %>
+        <%= fields_for :author do |f| %>
+          <div class="card">
+            <div class="card-block">
+              <div class="card-title">
+                <h4>Basic infos</h4>
+              </div>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <div class="field">
+                  <%= f.label :name %>
+                  <%= f.text_field :name, class: 'form-control' %>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="field">
+                  <%= f.label :email %>
+                  <%= f.email_field :email, class: 'form-control' %>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="field">
+                  <%= f.label :bio %>
+                  <%= f.text_area :bio, class: 'form-control' %>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <%= f.submit "Update info", class: 'btn btn-read' %>
+              </li>
+            </ul>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="col-md-4">
+      <%= form_tag change_password_account_path, method: :put do %>
+        <%= fields_for :author do |f| %>
+          <div class="card">
+            <div class="card-block">
+              <div class="card-title">
+                <h4>Change password</h4>
+              </div>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <div class="field">
+                  <%= f.label :current_password %>
+                  <%= f.password_field :current_password, class: "form-control" %>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="field">
+                  <%= f.label :new_password %>
+                  <%= f.password_field :new_password, class: "form-control" %>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="field">
+                  <%= f.label :new_password_confirmation %>
+                  <%= f.password_field :new_password_confirmation, class: "form-control" %>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <%= f.submit "Change password", class: 'btn btn-read' %>
+              </li>
+            </ul>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

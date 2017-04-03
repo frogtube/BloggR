@@ -9,6 +9,8 @@ class PostsController < ApplicationController
   def index
     if params[:tag].present?
       @posts = Post.published.most_recent.tagged_with([params[:tag]]).paginate(:page => params[:page], per_page: PER_PAGE)
+    elsif params[:author_id].present?
+      @posts = Post.published.most_recent.where(author_id: [params[:author_id]]).paginate(:page => params[:page], per_page: PER_PAGE)
     else  
       @posts = Post.published.most_recent.paginate(:page => params[:page], per_page: PER_PAGE)
     end
