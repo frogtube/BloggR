@@ -28,4 +28,14 @@ class Author < ApplicationRecord
 
   validates_presence_of :name, on: :update
 
+  def gravatar_image_url
+    "https://www.gravatar.com/avatar/#{gravatar_hash}"
+  end
+
+  private
+
+  def gravatar_hash
+    Digest::MD5.hexdigest(email.downcase)
+  end
+
 end
