@@ -2,24 +2,19 @@
 <% provide :author_active, "active" %>
 
 <div class="container">
-  <% if author_signed_in? %>
+  <% if current_author.id == @post.author.id %>
     <div>
       <%= link_to "Delete", post_path(@post), method: :delete, class: "btn btn-read btn-right-float", data: {confirm: "Are you sure?" } %> 
       <%= link_to "Edit", edit_post_path(@post), class: "btn btn-read btn-right-float", style: "text-align: right" %> 
+      <%= link_to "Back to my posts", author_path, class: "btn btn-read" %>
     </div>
   <% end %>
 
-  <% if author_signed_in? %>
-    <%= link_to "Back", author_path, class: "btn btn-read" %>
-  <% else %>
-    <%= link_to "Back", posts_path, class: "btn btn-read" %>
-  <% end %>
-
   <div class="row">
-    <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2" style="text-align: center">
+    <div class="col-md-12 col-lg-10 offset-lg-1" style="text-align: center">
       <h1><%= @post.title %></h1>
       <p class="published-date light-grey"><%= @post.was_published_at %> by <%= link_to @post.author.name, posts_path(author_id: @post.author.id) %></p>
-      <p><%= image_tag(current_author.gravatar_image_url, :class => "image-rounded-circled") %></p>
+      <p><%= image_tag(@post.author.gravatar_image_url, :class => "image-rounded-circled") %></p>
       <%= @post.content.html_safe %>
       <div class="author-bio">
         <p><%= image_tag(@post.author.gravatar_image_url, :class => "image-rounded-circled") %></p>
@@ -33,9 +28,7 @@
   </div>
 
 
-  <% if author_signed_in? %>
+  <% if current_author.id == @post.author.id %>
     <%= link_to "Back", author_path, class: "btn btn-read" %>
-  <% else %>
-    <%= link_to "Back", posts_path, class: "btn btn-read" %>
   <% end %>
 </div>
