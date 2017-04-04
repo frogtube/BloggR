@@ -36,6 +36,16 @@ body {
   height: 20px;
 }
 
+.navbar-image {
+    height: 70px;
+    width: 70px;
+    border: solid 2px $divider-color;
+}
+
+.navbar-image-div {
+  padding-top: 20px;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Raleway', sans-serif;
   color: $primary-color-text;

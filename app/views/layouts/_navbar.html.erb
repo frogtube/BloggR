@@ -47,10 +47,14 @@
         <a class="nav-link" href="#">Tech</a>
       </li>
 
+
+    </ul>
+    
+  </div>
       <% if author_signed_in? %>
-        <a class="nav-item dropdown <%= yield(:author_active) %>">
+        <a class="nav-item dropdown nav-author <%= yield(:author_active) %>">
           <a class="nav-link dropdown-toggle navbar-brand navbar-author-brand" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Author
+            <%= current_author.display_name %>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <%= link_to 'New post', new_post_path, class: "dropdown-item" %>
@@ -59,6 +63,7 @@
             <%= link_to 'Logout', destroy_author_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </a>
+        
       <% else %>
         <li class="nav-item">
           <%= link_to 'Signin', new_post_path, class: "nav-link" %>
@@ -67,8 +72,10 @@
           <%= link_to 'Signup', new_author_registration_path, class: "nav-link" %>
         </li>
       <% end %>
-
-    </ul>
-  </div>
+  <% if author_signed_in? %>
+    <div class="navbar-image-div">
+        <%= image_tag(current_author.gravatar_image_url, :class => "round-image navbar-image") %>
+    </div>
+  <% end %>
   
 </nav>
