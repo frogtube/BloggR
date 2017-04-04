@@ -1,5 +1,5 @@
 body {
-  background-color: $primary-color-light;
+  background-color: #fbfbfb;
 }
 
 .navbar {
@@ -37,13 +37,17 @@ body {
 }
 
 .navbar-image {
-    height: 70px;
-    width: 70px;
-    border: solid 2px $divider-color;
+  height: 70px;
+  width: 70px;
+}
+
+.navbar-image:hover {
+  border: solid 2px $primary-color;
 }
 
 .navbar-image-div {
   padding-top: 20px;
+  margin-left: 5px;
 }
 
 h1, h2, h3, h4, h5, h6 {

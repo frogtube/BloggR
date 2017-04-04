@@ -23,8 +23,14 @@
   margin-top: 10px;
 }
 
-.round-image {
+.image-rounded-circled {
   border-radius: 50%;
+  border: solid 1px $divider-color;
+}
+
+.image-squared-bordered {
+  border-radius: 3px;
+  border: solid 2px $divider-color;
 }
 
 .apple_pagination {

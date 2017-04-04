@@ -19,10 +19,20 @@
     <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2" style="text-align: center">
       <h1><%= @post.title %></h1>
       <p class="published-date light-grey"><%= @post.was_published_at %> by <%= link_to @post.author.name, posts_path(author_id: @post.author.id) %></p>
-      <p><%= image_tag(current_author.gravatar_image_url, :class => "round-image") %></p>
+      <p><%= image_tag(current_author.gravatar_image_url, :class => "image-rounded-circled") %></p>
       <%= @post.content.html_safe %>
+      <div class="author-bio">
+        <p><%= image_tag(@post.author.gravatar_image_url, :class => "image-rounded-circled") %></p>
+        <h4><%= @post.author.name %></h4>
+        <% if @post.author.website.present? %>
+          <p class='bio'>Visit my website at   <span class="website"><%= @post.author.website %></span></p>
+        <% end %>
+        <p class='bio'><%= @post.author.bio %></p>
+      </div>
     </div>
   </div>
+
+
   <% if author_signed_in? %>
     <%= link_to "Back", author_path, class: "btn btn-read" %>
   <% else %>

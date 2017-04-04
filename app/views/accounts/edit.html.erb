@@ -88,4 +88,18 @@
   </div>
 </div>
 
+<div class="container">
+  <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2" style="text-align: center">
+    <div class="author-bio">
+      <p><%= image_tag(current_author.gravatar_image_url, :class => "image-rounded-circled") %></p>
+      <h4><%= current_author.name %></h4>
+      <% if current_author.website.present? %>
+        <p class='bio'>Visit my website at   <span class="website"><%= current_author.website %></span></p>
+      <% end %>
+      <p class='bio'><%= current_author.bio %></p>
+    </div>
+  </div>
+</div>
+
+
 <% link_to 'Back to my posts', author_path, class: 'btn btn-read' %>

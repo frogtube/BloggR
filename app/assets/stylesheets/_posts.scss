@@ -81,6 +81,24 @@
   }
 }
 
+.author-bio {
+  background-color: white;
+  padding: 20px 45px;
+  border: 1px solid $divider-color;
+  border-radius: 3px;
+  margin: 30px 0px;
+  img, h4, p {
+    margin-bottom: 10px
+  }
+  .bio {
+    font-size: 0.9rem;
+  } 
+  .website {
+    text-decoration: underline;
+  }
+}
+
+
 @media screen and (min_width: 34em) {
   .post.index .card {
     height: 440px;
