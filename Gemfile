@@ -66,3 +66,5 @@ gem 'acts-as-taggable-on', '~> 4.0'
 
 gem 'simple_form'
 
+gem 'acts_as_votable', '~> 0.10.0'
+

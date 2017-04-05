@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
   devise_for :authors
   root to: 'posts#index'
-  resources :posts
+  resources :posts do
+    put 'like', to: 'posts#upvote'
+    put 'dislike', to: 'posts#downvote'
+  end
+  
   get '/author', to: 'posts#author', as: :author
   put 'publish', to: 'posts#publish'
   put 'unpublish', to: 'posts#unpublish'
+  
+
 
   get '/account', to: 'accounts#edit', as: :account
   put '/update_info', to: 'accounts#update_info', as: :update_info_account
