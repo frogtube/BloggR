@@ -42,7 +42,11 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
-    @post = Post.published.friendly.find(params[:id])
+    if author_signed_in? && current_author.id == Post.friendly.find(params[:id]).author.id
+      @post = Post.all.friendly.find(params[:id])
+    else
+      @post = Post.published.friendly.find(params[:id])
+    end
   end
 
   # GET /posts/new

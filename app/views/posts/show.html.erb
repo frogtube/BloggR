@@ -2,7 +2,7 @@
 <% provide :author_active, "active" %>
 
 <div class="container">
-  <% if current_author.id == @post.author.id %>
+  <% if author_signed_in? && current_author.id == @post.author.id %>
     <div>
       <%= link_to "Delete", post_path(@post), method: :delete, class: "btn btn-read btn-right-float", data: {confirm: "Are you sure?" } %> 
       <%= link_to "Edit", edit_post_path(@post), class: "btn btn-read btn-right-float", style: "text-align: right" %> 
@@ -28,7 +28,7 @@
   </div>
 
 
-  <% if current_author.id == @post.author.id %>
+  <% if author_signed_in? && current_author.id == @post.author.id %>
     <%= link_to "Back", author_path, class: "btn btn-read" %>
   <% end %>
 </div>
