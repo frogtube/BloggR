@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:edit, :update, :destroy]
   before_action :authenticate_author!, only: [:author, :new, :edit, :create, :update, :destroy, :publish, :unpublish]
-
+  
   PER_PAGE = 6
 
   # GET /posts
@@ -11,6 +11,8 @@ class PostsController < ApplicationController
       @posts = Post.published.most_recent.tagged_with([params[:tag]]).paginate(:page => params[:page], per_page: PER_PAGE)
     elsif params[:author_id].present?
       @posts = Post.published.most_recent.where(author_id: [params[:author_id]]).paginate(:page => params[:page], per_page: PER_PAGE)
+    elsif params[:category_id].present?
+      @posts = Post.published.most_recent.where(category_id: [params[:category_id]]).paginate(:page => params[:page], per_page: PER_PAGE)
     else  
       @posts = Post.published.most_recent.paginate(:page => params[:page], per_page: PER_PAGE)
     end
@@ -106,6 +108,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :description, :content, :banner_image_url, :tag_list)
+      params.require(:post).permit(:title, :description, :content, :banner_image_url, :tag_list, :category_id)
     end
 end

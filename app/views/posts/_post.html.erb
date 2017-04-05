@@ -7,7 +7,13 @@
       <h4 class="card-title"><%= link_to post.title, post %></h4>
       <p class="published-date"><%= raw post.tags.map{ |t| link_to t.name, posts_path(tag: t.name) }.join(', ') %></p>
                     <!-- Attention a simple_format, faille de sécurité? -->       
-      <p class="published-date"><%= post.was_published_at %> by <%= link_to post.author.name, posts_path(author_id: post.author.id) %></p>
+      <p class="published-date">
+        <%= post.was_published_at %> 
+        by <%= link_to post.author.name, posts_path(author_id: post.author.id) %>
+        in <% if post.category.present? %>
+          <%= post.category.title %>
+          <% end %>
+      </p>
       <%= link_to post do %>
         <p class="card-text"><%= truncate(post.description, length: 130) %></p>
       <% end %>
