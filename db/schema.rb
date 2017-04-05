@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170403071152) do
+ActiveRecord::Schema.define(version: 20170405105319) do
 
   create_table "authors", force: :cascade do |t|
     t.string   "name"
@@ -30,6 +30,10 @@ ActiveRecord::Schema.define(version: 20170403071152) do
     t.string   "website"
     t.index ["email"], name: "index_authors_on_email", unique: true
     t.index ["reset_password_token"], name: "index_authors_on_reset_password_token", unique: true
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "title"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -55,7 +59,9 @@ ActiveRecord::Schema.define(version: 20170403071152) do
     t.integer  "author_id"
     t.boolean  "published",        default: false
     t.datetime "published_at"
+    t.integer  "category_id"
     t.index ["author_id"], name: "index_posts_on_author_id"
+    t.index ["category_id"], name: "index_posts_on_category_id"
     t.index ["slug"], name: "index_posts_on_slug", unique: true
   end
 
