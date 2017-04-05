@@ -1,0 +1,33 @@
+<% provide :author_active, 'active' %>
+
+<div class="row">
+    <% @posts.each do |post| %>
+        <div class="col-sm-6 col-lg-4">
+            <div class="card">
+            <%= link_to post do %>
+                <div class="card-topper" style="background-image: url(<%= post.banner_image_url %>)"></div>
+            <% end %>
+                <div class="card-block">
+                <h4 class="card-title"><%= link_to post.title, post %></h4> 
+                <p class="tags"><%= raw post.tags.map{ |t| link_to t.name, author_path(tag: t.name) }.join(', ') %></p>
+                    <!-- Attention a simple_format, faille de sécurité? -->                 
+                <p class="published-date"><%= post.was_published_at %></p>
+                <%= link_to post do %>
+                    <p class="card-text"><%= truncate(post.description, length: 130) %></p>
+                <% end %>
+                <% if author_signed_in? %>
+                    <%= link_to "Edit", edit_post_path(post), class: "btn btn-read" %>
+                    <%= link_to "Delete", post_path(post), method: :delete, class: "btn btn-read", data: { confirm: 'Are yiou sure?' } %>
+                    <% if post.published? %>
+                        <%= link_to "Unpublish", unpublish_path(:post =>  post.id), method: :put, class: "btn btn-read" %>
+                    <% else %>
+                        <%= link_to "Publish", publish_path(:post =>  post.id), method: :put, class: "btn btn-read" %>
+                    <% end %> 
+                <% end %>
+                </div>
+            </div>
+        </div>
+    <% end %>
+</div>
+
+<%= render 'paginate' %>

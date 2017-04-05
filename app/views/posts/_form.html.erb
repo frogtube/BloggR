@@ -1,42 +1,66 @@
-<%= form_for(post) do |f| %>
-  <% if post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+<div class="container">
+  <%= form_for(post) do |f| %>
+    <% if post.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+        <ul>
+        <% post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
 
-      <ul>
-      <% post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <div class="row">
+      <div class="col-lg-4 col-md-8">
+
+        <div class="card">
+          <div class="card-block">
+            <% if @post.new_record? %>
+              <h4 class="card-title">New post</h4>
+            <% else %>
+              <h4 class="card-title">
+                <b>Edit</b>
+                <span class="thin-text">'<%= @post.title %>'</span> 
+              </h4>
+            <% end %>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                <%= f.label :title %>
+                <%= f.text_field :title, class: "form-control" %>
+            </li>
+            <li class="list-group-item">
+                <%= f.label :banner_image_url %>
+                <%= f.text_field :banner_image_url, class: "form-control" %>
+            </li>
+            <li class="list-group-item" id="description-card-block">
+              <%= f.label :description %>
+              <%= f.text_area :description, class: "form-control" %>
+            </li>
+            <li class="list-group-item">
+                <%= f.label 'Tags' %>
+                <%= f.text_field :tag_list, class: "form-control" %>
+            </li>
+            <li class="list-group-item">
+              <%= f.label :slug %>
+              <%= f.text_field :slug, class: "form-control", disabled: true %>
+            </li>
+          </ul>
+          <div class="card-block actions">
+            <%= f.submit "Save blog post", class: "btn btn-read btn-block" %>
+          </div>
+        </div>
+        <% if @post.persisted? %>
+          <%= link_to 'Show', @post %> |
+        <% end %>
+        <%= link_to 'Back', posts_path %>
+        </div>
+        <div class="col-md-8">
+          <%= f.text_area :content %>
+        </div>
+      </div>
     </div>
   <% end %>
+</div>
 
-  <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
-
-  <div class="field">
-    <%= f.label :banner_image_url %>
-    <%= f.text_field :banner_image_url %>
-  </div>
-
-  <div class="field">
-    <%= f.label :description %>
-    <%= f.text_area :description %>
-  </div>
-
-  <div class="field">
-    <%= f.label :content %>
-    <%= f.text_area :content %>
-  </div>
-
-  <div class="field">
-    <%= f.label :slug %>
-    <%= f.text_field :slug, class: "form-control", disabled: true %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>

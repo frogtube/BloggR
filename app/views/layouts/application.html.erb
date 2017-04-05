@@ -3,16 +3,30 @@
   <head>
     <title><%= yield(:page_title) %> | BloggR</title>
     <%= csrf_meta_tags %>
-
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,400i,500,700|Roboto:300,300i,400,500,500i,700" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="//cloud.tinymce.com/stable/tinymce.min.js"></script>
     </head>
 
   <body>
 
     <%= render 'layouts/navbar' %>
 
-    <div class="container <%= controller_name %> <%= action_name %>" style="padding-top: 2em">
+    <div class="container flash-container">
+      <% if flash.any? %>
+        <% flash.keys.each do |key| %>
+          <div class="alert alert-<%= key.to_s %> alert-dismissible fade show" role="alert">
+            <%= flash[key] %>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="<%= controller_name %> <%= action_name %>" style="padding-top: 2em">
       <%= yield %>
     </div>
     

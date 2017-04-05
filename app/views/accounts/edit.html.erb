@@ -1,0 +1,105 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <%= form_tag update_info_account_path, method: :put do %>
+        <%= fields_for :author do |f| %>
+          <div class="card">
+            <div class="card-block">
+              <div class="card-title">
+                <h4>Basic infos</h4>
+              </div>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <div class="field">
+                  <%= f.label :name %>
+                  <%= f.text_field :name, value: current_author.name, class: 'form-control' %>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="field">
+                  <%= f.label :avatar %> <br>
+                  <%= image_tag(current_author.gravatar_image_url) %>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="field">
+                  <%= f.label :email %>
+                  <%= f.text_field :email, value: current_author.email, class: 'form-control' %>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="field">
+                  <%= f.label :website %>
+                  <%= f.text_field :website, value: current_author.website, class: 'form-control' %>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="field">
+                  <%= f.label :bio %>
+                  <%= f.text_area :bio, value: current_author.bio, class: 'form-control' %>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <%= f.submit "Save info", class: 'btn btn-read' %>
+              </li>
+            </ul>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="col-md-4">
+      <%= form_tag change_password_account_path, method: :put do %>
+        <%= fields_for :author do |f| %>
+          <div class="card">
+            <div class="card-block">
+              <div class="card-title">
+                <h4>Change password</h4>
+              </div>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <div class="field">
+                  <%= f.label :current_password %>
+                  <%= f.password_field :current_password, class: "form-control" %>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="field">
+                  <%= f.label :new_password %>
+                  <%= f.password_field :new_password, class: "form-control" %>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="field">
+                  <%= f.label :new_password_confirmation %>
+                  <%= f.password_field :new_password_confirmation, class: "form-control" %>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <%= f.submit "Change password", class: 'btn btn-read' %>
+              </li>
+            </ul>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2" style="text-align: center">
+    <div class="author-bio">
+      <p><%= image_tag(current_author.gravatar_image_url, :class => "image-rounded-circled") %></p>
+      <h4><%= current_author.name %></h4>
+      <% if current_author.website.present? %>
+        <p class='bio'>Visit my website at   <span class="website"><%= current_author.website %></span></p>
+      <% end %>
+      <p class='bio'><%= current_author.bio %></p>
+    </div>
+  </div>
+</div>
+
+
+<% link_to 'Back to my posts', author_path, class: 'btn btn-read' %>

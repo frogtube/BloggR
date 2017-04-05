@@ -1,0 +1,77 @@
+body {
+  background-color: #fbfbfb;
+}
+
+.navbar {
+    background-color: white;
+    border-bottom: solid 0.5px $divider-color;
+    height: 40px;
+}
+
+.navbar-nav {
+    float:none;
+    margin:0 auto;
+    text-align: center;
+}
+
+.navbar-brand {
+  font-family: 'Raleway', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-author-brand {
+  margin-top: 5px;
+}
+
+.dropdown-menu {
+  float: right;
+}
+
+.navbar-toggler, .navbar-toggeable-md {
+  height: 30px;
+}
+
+.navbar-toggler-icon {
+  height: 20px;
+}
+
+.navbar-image {
+  height: 70px;
+  width: 70px;
+}
+
+.navbar-image:hover {
+  border: solid 2px $primary-color;
+}
+
+.navbar-image-div {
+  padding-top: 20px;
+  margin-left: 5px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Raleway', sans-serif;
+  color: $primary-color-text;
+}
+
+p {
+  font-family: 'Raleway', serif;
+  color: $primary-color-text;
+}
+
+.field {
+  font-family: 'Raleway', sans-serif;
+}
+
+@media screen and (min_width: 34em) {
+  
+}
+
+@media screen and (min_width: 48em) {
+  
+}
+
+@media screen and (min_width: 75em) {
+ 
+}
